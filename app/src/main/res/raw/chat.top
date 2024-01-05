@@ -1,0 +1,190 @@
+topic: ~chat()
+# Defining extra concepts out of words or group of words
+
+concept:(hello) [hello hi hey greetings]
+
+concept:(hry) ["how are you" whatsup " how are you doing"]
+
+concept:(guitar) ["[can do] {you} play {some} guitar" "do you know how to play guitar" "can you play some music" "play guitar"]
+
+concept:(thanks) [thanks "thank you"]
+
+concept:(shake_hands) ["[can let's "would you like to"] {we} {please} shake hands"]
+
+concept:(bye)["goodbye" "see you" "bye" "bye bye"]
+
+concept:(whats_up) ["whats up" "whats happening" "how are you {doing}" "How are things?" "Are you doing fine?"]
+
+concept:(i_am) [I'm i'm "I am" "i am"]
+
+concept:(help) ["{how} [can could] you help me"]
+
+concept:(askpeppertoeat) ["["would you like to" "do you like to" "what would you like to" "do you want to" "what do you"] [eat drink]"]
+
+concept:(good) [good fine amazing outstanding perfect]
+
+concept:(yes) [yes yeah indeed yep affirmative "good enough" definitely "{for} sure" alright "why not" ok okay certainly "very well" absolutely right exactly precisely perfect correct "of course"]
+
+concept:(no) ["{definitely absolutely} [no not]" nope "no way" never negative negatory "don't want" "not at all"]
+
+concept:(confirmation) ^rand["okay" "got it" "alright" "sure"]
+
+concept:(guide) ["city" "city guide" "guide" "travel" "travel guide {for me}" "places to visit" "[can could] you guide me through {uae}"]
+
+concept:(explore) ["i want to [explore visit]" "explore" "guide me through" "visit"]
+
+concept:(i_want_to) [want "I want" "I want to" "want to" "I would like to" "would like to"]
+
+concept:(home)["{~i_want_to} {go} home {please}" "let's {go} home {please}"]
+
+concept:(back)["{~i_want_to} {go} back {please}" "let's {go} back {please}"]
+
+concept:(taxi) ["i want to book taxi" "where can i find taxi" "taxi" "taxi booking"
+                "cab booking" "cab" "taxi service" "cab service"
+                "[can could] you book a taxi for me"]
+
+concept:(service) [service services "hotel services" "what other services do you offer {here}" "do you offer {any} other services"]
+
+concept:(hotel) ["hotel" "resorts" "about hotel" "hotel booking" "explore hotel" "tell me about {this} [hotel resort]"]
+
+concept:(hotel_cat) ["About Us" "hotel facilities" "dining" "rooms"]
+
+concept:(laundry) [laundry laundries clothing ironing "[can could] you collect my laundry"]
+
+concept:(cleaning) [cleaning "room cleaning" "housekeeping" "make my room" "[can could] you make{up} my room clean" "[can could] you clean my room" "makeup room"]
+
+concept:(type_head) ["{what} [types kind] of"]
+
+concept:(type_tail) ["do you have" "types"]
+
+#dynamic
+dynamic: city_list
+
+dynamic: place_list
+
+#proposal
+proposal: %init_help do you need any other help?
+    u1:(~yes) what else I can do for you?
+    u1:(~no) thank you, visit us again
+
+proposal: %init_verify this room does not belongs to you
+
+proposal: %init_city which city would you like to visit?
+
+proposal: %init_hi \rspd=80\ How may I help you?
+
+proposal: %init_bye \rspd=80\ Bye Bye, Have a nice Day
+
+proposal: %init_roomnumber Please write down your Room Number and first name and press submit button
+
+proposal: %init_services \rspd=80\ Please select the desired service
+
+proposal: %init_contact \rspd=80\ We will let you know, as soon as your taxi arrives.
+
+proposal: %init_service_contact \rspd=80\ we will make your room sparkling clean, as you return back
+
+proposal: %init_service_laundry \rspd=80\ Someone will collect laundry from your room in few Minutes
+
+proposal: %init_glitch_taxi \rspd=80\ Due to a technical glitch Taxi Booking service is not working
+
+proposal: %init_glitch \rspd=80\ Due to a technical glitch this service is not working
+
+proposal: %init_place Here are the most popular attractions
+
+proposal: %init_hotel Please choose from the given selections
+
+proposal: %init_place_detail \rspd=90\ $place_description
+
+proposal: %init_hotel_detail \rspd=90\ $hotel_description
+
+proposal: %init_hotel_amenities  Here is the list of hotel amenities
+
+proposal: %init_test \rspd=80\ you reached here
+
+proposal: %init_taxi_booking Do you want to book Taxi?
+    u1:(~yes) ok, ^execute(StatusExecutor, taxi_booking_select) Please write down your Room Number and press submit button
+    u1:(~no) ok, ^execute(StatusExecutor, home_select)
+
+u:({~explore} _~city_list) $city=$1 ^execute(StatusExecutor, city_select, $city) ~confirmation
+
+u:(_~place_list) $place=$1 ^execute(StatusExecutor, place_select, $place) ~confirmation
+
+u:({~type_head} _~hotel_cat {~type_tail}) $cat=$1 ^execute(StatusExecutor, hotelc_select, $cat) ~confirmation
+
+u:(_~cleaning) $clean=$1 ^execute(StatusExecutor, cleaning_select, $clean) ~confirmation
+
+u:(_~laundry) $laund=$1 ^execute(StatusExecutor, laundry_select, $laund) ~confirmation
+
+u:(~hello) ~hello ^execute(StatusExecutor, home_select)
+
+u:(~hry) i am good, thank you, what about you
+
+u:(good evening) good evening
+
+u:(good morning) good morning
+
+u:(good night) good night sweet dreams
+
+u:(~thanks) you are welcome
+
+u:(~guide) ^execute(StatusExecutor, guide_select) ~confirmation
+
+u:(~home) ^execute(StatusExecutor, home_select) ~confirmation
+
+u:(~back) ^execute(StatusExecutor, back_select) ~confirmation
+
+u:(~taxi) ^execute(StatusExecutor, taxi_select) ~confirmation
+
+u:(~service) ^execute(StatusExecutor, service_select) ~confirmation
+
+u:(~hotel) ^execute(StatusExecutor, hotel_select) ~confirmation
+
+
+u:(["what is your name" "who are you"]) My name is pepper what is your name
+    u1:({my} {name} {is} _*) nice to meet you $1 $name=$1
+        u2:(what is my name) your name is $name
+
+u:("what is my name") First, tell me your name
+    u1:({my name is} _*) your name is $1
+
+u:(~whats_up) ~i_am ~good ~thanks, and you
+
+u:(what do you like to do) I like to speak with human
+
+u:(i love you) i love you more, stay safe
+
+u:(["where is your favourite place" "which is your favorite country"]) of course, Dubai
+
+u:(who is your favorite actor) \rspd=80\ shah rukh khan
+
+u:(~help) yes, i can help you to give information regarding hotel, city, Restaurants and Taxi Booking
+
+u:(~askpeppertoeat) No, thank you
+
+u:([
+    "I'm [fine okay good perfect] {thanks}"
+    ])
+    ^rand[
+        "I'm glad to hear that"
+        "It's good to hear that"
+    ]
+
+u:(["What are you doing here?"
+    "Why are you here?"
+    "What is your job?"
+    "what can you do?"
+    "What are you {made} for?"
+    ])
+    ^rand["I'm here to help people and find their needs quickly" "I'm here to help you"]
+
+u:(~bye) ~bye
+
+u:(~shake_hands) ^enableThenGoto(hands)
+    proposal: %hands are you sure you, want to shake hands ?
+        u1: (yes) okay, let's shake hands
+        u1: (no) no worries, you take care
+
+u:(~guitar) sure ^enableThenGoto(guitar)
+    proposal: %guitar would you like to see me play something ?
+        u1: (~yes) ^execute(StatusExecutor, guitar_animation)
+        u1: (~no) no worries take care then

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background2"
+    tools:context=".Fragments.TaxiFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <include layout="@layout/back_and_home"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="90dp"
+        android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_tb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Taxi Booking"
+        android:layout_gravity="top"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:fontFamily="cursive"
+        android:layout_marginTop="14dp"
+        android:layout_marginBottom="8dp"
+        android:textSize="52sp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/abcv"
+        android:textSize="92dp"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:fontFamily="cursive"
+        android:visibility="gone"
+        android:text="SomeOne Will contact you shortly" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:layout_marginTop="10dp"
+        android:id="@+id/myLinear"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/editbox_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+    <EditText
+        android:id="@+id/room_number_box"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="4dp"
+        android:background="@drawable/input_design"
+        android:hint="Room Number"
+        android:saveEnabled="false"
+        android:inputType="phone"
+        android:textColorHint="@color/black"
+        android:padding="20dp"
+        android:textColor="@color/black"
+        android:textSize="18dp" />
+            <EditText
+                android:id="@+id/name_box"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:background="@drawable/input_design"
+                android:hint="Your First Name"
+                android:saveEnabled="false"
+                android:inputType="textPersonName"
+                android:textColorHint="@color/black"
+                android:padding="20dp"
+                android:textColor="@color/black"
+                android:textSize="18dp" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/mobile_number_submit"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_below="@+id/editbox_layout"
+            android:layout_marginStart="422dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/circle_shape"
+            android:fontFamily="cursive"
+            android:textAllCaps="false"
+            android:text="Submit"
+            android:textColor="@color/white"
+            android:textSize="28dp" />
+
+    </RelativeLayout>
+    </LinearLayout>
+</FrameLayout>

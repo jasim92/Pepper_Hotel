@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background2"
+    tools:context=".Fragments.ConfirmRoomFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/tell_me_room"
+        android:textSize="92dp"
+        android:gravity="center"
+        android:textColor="@color/skyhard"
+        android:fontFamily="cursive"
+        android:text="Tell me your Room Number" />
+
+</FrameLayout>

@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Pepper_Hotel</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="About_us">
+        The Emirates Grand Hotel in Dubai is ideally situated on Sheikh Zayed Road known as "The Heart of Dubai",
+        which is considered the business hub and shopping mecca of Dubai.The hotel is a brief fifteen minutes away from Dubai International Airport, Emirates Road, Expo Centre, and Dubai Convention Centre, Emirate of Sharjah,
+        and a short walking distance from Dubai\'s largest mall including The Dubai Mall. We have 340 rooms in our hotel.
+    </string>
+    <string name="hotel_facilities">
+        "Here are the Amenities provided by Hotel "
+    </string>
+    <string name="rooms">
+        The Deluxe Room Featuring a modern decor, this spacious air-conditioned room comes with a flat-screen satellite TV and a mini bar.
+        \nStart From Aed 160 Per Day
+        \nRoom Size – 34 sq m
+    </string>
+    <string name="room3">
+        This spacious suite features a living room with flat-screen TV, DVD player, iPod docking station and panoramic view of Dubai city.
+        It includes a bathroom with luxury toiletries and a separate tub. Room Size – 35 sq m
+        \nStart From Aed 180 Per Day
+
+    </string>
+    <string name="room4">
+        This Junior spacious suite comes with a 37-inch flat screen TV, DVD player and iPod docking station.
+        It includes a private bathroom stocked with luxury toiletries.
+        \nStart From Aed 350 Per Day
+        \nRoom Size – 57 sq m
+    </string>
+    <string name="dining">
+        At The Emirates Grand Hotel\'s Café and Restaurant, you will discover a selection of exquisite delicacies to enjoy throughout the day. Indulge in gourmet snacks,
+        sandwiches, delightful pastries, ice creams, cakes, aromatic coffee, freshly squeezed juice, smoothies,
+        fusion tea, and mocktails. The hotel\'s international all-day dining restaurant offers an extensive buffet for breakfast and lunch,
+        whether it\'s a business meeting, a social gathering, or simply quality time spent with your loved ones.
+    </string>
+</resources>
